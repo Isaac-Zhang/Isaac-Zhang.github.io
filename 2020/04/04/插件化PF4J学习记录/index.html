@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="PF4J 学习记录什么是PF4J？
+Plugin Framework for JavaPF4J 是一个java语言的、开源的、轻量级的的插件框架，只需要很少的一些依赖(slf4j-api，java-semver(Java implementation of the SemVer Specificat"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Isaac-Zhang"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="插件化PF4J学习记录"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="PF4J 学习记录什么是PF4J？
+Plugin Framework for JavaPF4J 是一个java语言的、开源的、轻量级的的插件框架，只需要很少的一些依赖(slf4j-api，java-semver(Java implementation of the SemVer Specificat"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="奔跑的人生"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://life-runner.comhttps://raw.githubusercontent.com/Isaac-Zhang/Isaac-Zhang.github.io/master/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://life-runner.comhttps://raw.githubusercontent.com/Isaac-Zhang/Isaac-Zhang.github.io/master/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>插件化PF4J学习记录 - 奔跑的人生</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">做一个好人</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Isaac-Zhang" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('https://raw.githubusercontent.com/Isaac-Zhang/Isaac-Zhang.github.io/master/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>插件化PF4J学习记录</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2020-04-04
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="PF4J-学习记录"><a href="#PF4J-学习记录" class="headerlink" title="PF4J 学习记录"></a>PF4J 学习记录</h1><h2 id="什么是PF4J？"><a href="#什么是PF4J？" class="headerlink" title="什么是PF4J？"></a>什么是PF4J？</h2><blockquote>
+<p>Plugin Framework for Java<br>PF4J 是一个java语言的、开源的、轻量级的的插件框架，只需要很少的一些依赖(<code>slf4j-api</code>，<code>java-semver(Java implementation of the SemVer Specification)</code>。<br>通过使用<code>pf4j</code>,可以很容易的在<code>单体应用</code>与<code>模块化应用</code>之间切换。</p>
+</blockquote>
+<p>核心组件：</p>
+<ul>
+<li><code>ExtensionPoint</code>,代表程序中可被调用的自定义代码， 任意接口或者抽象类都可被标注为<code>扩展点</code>，实现<code>ExtensionPoint</code>接口即可。</li>
+<li><code>Extension</code>是一个<code>ExtensionPoint</code>扩展点的实现，是一个<code>Java Annotation</code>。</li>
+<li><code>Plugin</code> 所有插件类型的基类，每一个插件都会通过一个独立的类加载器进行加载，以防止冲突发生。</li>
+<li><code>PluginManager</code> 用来管理插件的各种功能（加载、启动、停止等），你可以使用<code>DefaultPluginManager</code>作为内置的默认实现，或者你也可以通过实现<code>AbstractPluginManager</code>自定义实现，只需要实现一个工厂方法。</li>
+<li><code>PluginLoader</code> 用来加载插件所需要的所有信息（classes）</li>
+</ul>
+<h2 id="Get-Started"><a href="#Get-Started" class="headerlink" title="Get Started"></a>Get Started</h2><p>在应用程序中添加<code>pf4j</code>是非常容易的，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    PluginManager pluginManager = <span class="keyword">new</span> DefaultPluginManager();</span><br><span class="line">    pluginManager.loadPlugins();</span><br><span class="line">    pluginManager.startPlugins();</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>每一个有效的插件都会由不同的类加载器加载，通过<code>PluginClassLoader</code>。<code>PluginClassLoader</code>仅包含从<code>PluginClasspath</code>(默认为插件目录结构classes目录以及lib目录下)、运行时类以及运行时所请求和依赖的插件中加载信息，会在委托给父类加载器之前通过读取插件的jar包加载。<br>插件的存储结构：</p>
+<ul>
+<li>plugin1.zip</li>
+<li>plugin1 文件夹<ul>
+<li>classes</li>
+<li>lib(可选项，存储插件中使用到的三方库) </li>
+</ul>
+</li>
+</ul>
+<p>插件管理器通过使用<code>PluginDescriptorFinder</code>查找插件元数据。<br><code>DefaultPluginDescriptorFinder</code>是一个指向<code>ManifestPluginDescriptorFinder</code>，是用来找到<code>manifest.mf</code>文件的跳转。<code>classes/META-INF/MANIFEST.MF</code>如下:</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">Manifest-Version</span>: <span class="string">1.0</span></span><br><span class="line"><span class="meta">Archiver-Version</span>: <span class="string">Plexus Archiver</span></span><br><span class="line"><span class="meta">Created-By</span>: <span class="string">Apache Maven</span></span><br><span class="line"><span class="meta">Built-By</span>: <span class="string">isaac</span></span><br><span class="line"><span class="meta">Build-Jdk</span>: <span class="string">1.8.0_42</span></span><br><span class="line"><span class="meta">Plugin-Class</span>: <span class="string">org.pf4j.demo.welcome.WelcomePlugin</span></span><br><span class="line"><span class="meta">Plugin-Dependencies</span>: <span class="string">x, y, z</span></span><br><span class="line"><span class="meta">Plugin-Id</span>: <span class="string">welcome-plugin</span></span><br><span class="line"><span class="meta">Plugin-Provider</span>: <span class="string">Isaac Zhang</span></span><br><span class="line"><span class="meta">Plugin-Version</span>: <span class="string">0.0.1</span></span><br></pre></td></tr></table></figure>
+<p>上述结构中有几点需要注意：</p>
+<ul>
+<li>Plugin-Id</li>
+<li>Plugin-Class</li>
+<li>Plugin-Version <ul>
+<li>PF4J使用<code>jsemver</code>,因此支持版本的比对。<a href="https://www.jianshu.com/p/2d4ff5c94560" target="_blank" rel="noopener">SemVer传送门</a> </li>
+</ul>
+</li>
+<li>Plugin-Dependencies</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>优势</th>
+<th>劣势</th>
+<th>现状</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>自定义实现插件机制，在SpringContext加载之前注入插件信息（classes）</td>
+<td>可自由发挥</td>
+<td>上手有一定技术难度</td>
+<td>demo已实现，插件可以读取主程序类信息</td>
+</tr>
+<tr>
+<td>pf4j</td>
+<td>理解简单，方便扩展，不局限于Spring</td>
+<td>不支持热插拔，在研究中</td>
+<td>demo 已实现</td>
+</tr>
+<tr>
+<td>pf4j-spring</td>
+<td>1. 编码简单                                       2. 有社区支持</td>
+<td>1. 不支持热插拔 2. 受限于spring</td>
+<td>demo已实现</td>
+</tr>
+</tbody></table>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/Isaac-Zhang" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2020 Isaac-Zhang<br></p>
+                <p class="copyright text-muted"><a target="_blank" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">陕ICP备19016566号-1</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

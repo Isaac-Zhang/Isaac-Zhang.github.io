@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="Spring Cloud Gateway Guide
+学习技术最佳渠道，肯定是官方文档： gateway传送门
+
+
+主要2点
+
+Spring Cloud Gateway是构建在Spring Boot 2.x、Spring Webflux 以及 Reactor 之上的，因此一些同步类库可能不能和gat"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Isaac-Zhang"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="SpringCloudGateway Guide"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Spring Cloud Gateway Guide
+学习技术最佳渠道，肯定是官方文档： gateway传送门
+
+
+主要2点
+
+Spring Cloud Gateway是构建在Spring Boot 2.x、Spring Webflux 以及 Reactor 之上的，因此一些同步类库可能不能和gat"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="奔跑的人生"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://life-runner.comhttps://raw.githubusercontent.com/Isaac-Zhang/Isaac-Zhang.github.io/master/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://life-runner.comhttps://raw.githubusercontent.com/Isaac-Zhang/Isaac-Zhang.github.io/master/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>SpringCloudGateway Guide - 奔跑的人生</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">做一个好人</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Isaac-Zhang" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('https://raw.githubusercontent.com/Isaac-Zhang/Isaac-Zhang.github.io/master/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>SpringCloudGateway Guide</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2020-04-04
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Spring-Cloud-Gateway-Guide"><a href="#Spring-Cloud-Gateway-Guide" class="headerlink" title="Spring Cloud Gateway Guide"></a>Spring Cloud Gateway Guide</h1><blockquote>
+<p>学习技术最佳渠道，肯定是官方文档： <a href="https://cloud.spring.io/spring-cloud-gateway/reference/html/" target="_blank" rel="noopener">gateway传送门</a></p>
+</blockquote>
+<p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579071164933.png" alt="使用Gateway注意点"></p>
+<p>主要2点</p>
+<ul>
+<li>Spring Cloud Gateway是构建在Spring Boot 2.x、Spring Webflux 以及 Reactor 之上的，因此一些同步类库可能不能和gateway同时使用。（Spring Data/ Spring Security）</li>
+<li>因为SC Gateway需要Springboot和Netty的运行支持，因此无法支持传统的Servlet 容器，也不支持编译war包。</li>
+</ul>
+<h2 id="1-Quick-Start"><a href="#1-Quick-Start" class="headerlink" title="1. Quick Start"></a>1. Quick Start</h2><p>和<code>Seata</code>中提到的一样，Gateway的使用同样遵循三步曲规律，首先我们创建项目<code>broad-gateway</code>。</p>
+<ul>
+<li><p>第一步：添加依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-gateway<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>spring-cloud-starter-gateway</code> 网关的主依赖</li>
+<li><code>spring-boot-starter-actuator</code>  用于对外暴露微服务的管理端点(endpoint)</li>
+<li><code>spring-cloud-starter-netflix-eureka-client</code> 用于服务注册（因为我们的路由规则是根据<code>service-name</code>进行实现匹配和负载均衡的）</li>
+</ul>
+</li>
+<li><p>第二步：加注解(gateway不需要开始注解，这里只需添加服务发现客户端注解)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GatewayApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> SpringApplicationBuilder()</span><br><span class="line">                .sources(GatewayApplication<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">                .<span class="title">run</span>(<span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第三部：改配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9999</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">prefer-ip-address:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://172.16.1.187:21001/eureka</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">broadway-gateway</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="comment">#划重点</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="comment">#wiretap是gateway排错高级功能，从Greenwich SR3开始支持</span></span><br><span class="line">      <span class="attr">httpserver:</span></span><br><span class="line">        <span class="attr">wiretap:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">httpclient:</span></span><br><span class="line">        <span class="attr">wiretap:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">discovery:</span></span><br><span class="line">        <span class="attr">locator:</span></span><br><span class="line">          <span class="comment"># gateway通过discovery自动发现其他微服务</span></span><br><span class="line">          <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span>  <span class="string">ws_tally_route</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://ws-tally-service</span></span><br><span class="line">          <span class="comment"># 决定是否返回404的关键</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">TimeBetween=上午6:00,下午11:00</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/v1/ws/tally/**</span></span><br><span class="line">          <span class="comment"># 对请求进行过滤处理</span></span><br><span class="line">          <span class="attr">filters:</span></span><br><span class="line">            <span class="comment"># 局部过滤器配置顺序默认数值从1开始递增</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">AddRequestHeader=CompanyKey,123456</span> <span class="comment"># sort(1)</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">AddResponseHeader=Success,Isaac</span>    <span class="comment"># sort(2)</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">PreLog=CustomLogKey,CustomLogValue</span> <span class="comment"># sort(3)</span></span><br><span class="line"><span class="comment"># springboot 下监控的核心基础</span></span><br><span class="line"><span class="attr">management:</span></span><br><span class="line">  <span class="attr">endpoints:</span></span><br><span class="line">    <span class="attr">web:</span></span><br><span class="line">      <span class="attr">exposure:</span></span><br><span class="line">        <span class="attr">include:</span> <span class="string">'*'</span></span><br><span class="line">  <span class="attr">endpoint:</span></span><br><span class="line">    <span class="attr">health:</span></span><br><span class="line">      <span class="attr">show-details:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">logging:</span></span><br><span class="line">  <span class="attr">level:</span></span><br><span class="line">    <span class="attr">org.springframework.cloud.gateway:</span> <span class="string">debug</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="2-术语"><a href="#2-术语" class="headerlink" title="2. 术语"></a>2. 术语</h2><ul>
+<li><p><strong>Route</strong>： 网关最基本的模块。（路由是否匹配是由所有的<code>predicate==true</code>决定的）</p>
+<p>Route 包含以下几个核心属性配置：</p>
+<ul>
+<li>id</li>
+<li>uri</li>
+<li>predicates</li>
+<li>filters</li>
+</ul>
+</li>
+<li><p><strong>Predicate</strong>：这是java8 引入的函数式编程的新特性<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html" target="_blank" rel="noopener">Predicate</a>。输入的类型是<code>org.springframework.web.server.ServerWebExchange</code>，它允许匹配任何来自于HTTP request的内容，例如：<code>headers</code> / <code>parameters</code>。</p>
+</li>
+<li><p><strong>Filter</strong>：这是使用特定创建工厂构建的一些<code>org.springframework.cloud.gateway.filter.GatewayFilter</code>的实例，可以对请求之前或者返回之前的请求/响应对象进行修改。</p>
+</li>
+</ul>
+<h2 id="3-请求流程"><a href="#3-请求流程" class="headerlink" title="3. 请求流程"></a>3. 请求流程</h2><p><img src="https://cloud.spring.io/spring-cloud-gateway/reference/html/images/spring_cloud_gateway_diagram.png" alt="gateway workflow"></p>
+<h2 id="4-Route-Predicate"><a href="#4-Route-Predicate" class="headerlink" title="4. Route Predicate"></a>4. Route Predicate</h2><p>Spring Cloud Gateway 内置了11种路由谓词工厂。</p>
+<ol>
+<li><p>After Route Predicate Factory<br>接受一个datetime类型的参数，该实例匹配在设定时间之<code>后</code>的请求，否则返回<code>404</code>.</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">after_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://www.life-runner.com</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">After=2020-01-01T17:42:47.789-07:00[America/Denver]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Before Route Predicate Factory<br>接受一个datetime类型的参数，该实例匹配在设定时间之<code>前</code>的请求，否则返回<code>404</code>.</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">before_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://www.life-runner.com</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Before=2020-01-01T17:42:47.789-07:00[America/Denver]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Between Route Predicate Factory<br>接受2个datetime类型参数，该谓词匹配发生在2个时间范围之内的请求,第二个参数必须在第一个参数日期之后。</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">between_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://www.life-runner.com</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Between=2017-01-20T17:42:47.789-07:00[America/Denver],</span> <span class="number">2017</span><span class="number">-01</span><span class="string">-21T17:42:47.789-07:00[America/Denver]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Cookie Route Predicate Factory<br> 接受2个参数：<code>cookie_name</code>和<code>正则表达式</code>,该谓词匹配当前给定的cookie-name并且value符合正则表达式的请求。</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">     <span class="attr">cloud:</span></span><br><span class="line">       <span class="attr">gateway:</span></span><br><span class="line">         <span class="attr">routes:</span></span><br><span class="line">         <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">cookie_route</span></span><br><span class="line">           <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">           <span class="attr">predicates:</span></span><br><span class="line">           <span class="bullet">-</span> <span class="string">Cookie=name,</span> <span class="string">\s+</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Header Route Predicate Factory<br> 接受2个参数:<code>header-name</code>和<code>正则表达式</code>,该谓词匹配当前给定的header-name 并且value 符合正则表达式的请求。</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">   <span class="attr">cloud:</span></span><br><span class="line">     <span class="attr">gateway:</span></span><br><span class="line">       <span class="attr">routes:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">header_route</span></span><br><span class="line">         <span class="attr">uri:</span> <span class="string">https://www.life-runner.com</span></span><br><span class="line">         <span class="attr">predicates:</span></span><br><span class="line">         <span class="bullet">-</span> <span class="string">Header=X-Request-Id,</span> <span class="string">\d+</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Host Route Predicate Factory<br>接受1个参数，host patterns 列表，这个patterns是<code>Ant-Style</code>，使用<code>.</code>分隔。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">host_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://www.life-runner.com</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Host=**.babydy.cn,**.life-runner.com</span></span><br></pre></td></tr></table></figure>
+
+<p>也支持模板变量，例如：{sub}.life-runner.com</p>
+</li>
+<li><p>Method Route Predicate Factory<br> 接受1-N个参数，匹配HTTP Method.</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">method_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://www.life-runner.com</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Method=GET,POST,PUT,DELETE</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Path Route Predicate Factory<br> 接受一个<code>org.springframework.util.PathMatcher</code>模式类型的list。</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">host_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://www.life-runner.com</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Path=/users/**,/share/**,/setinel/&#123;keys&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Query Route Predicate Factory<br> 接受2个参数：第一个<code>param</code>必填，第二个可选<code>regexp</code>,匹配一个查询路由谓词。</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="attr">cloud:</span></span><br><span class="line">      <span class="attr">gateway:</span></span><br><span class="line">        <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">query_route</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">https://www.life-runner.com</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">Query=isaac</span></span><br><span class="line">          <span class="comment">#- Query=isaac,/d+</span></span><br></pre></td></tr></table></figure>
+<p>上述例子表示：如果请求中包含一个isaac的查询参数，则匹配，否则，返回404</p>
+</li>
+<li><p>RemoteAddr Route Predicate Factory<br>接受(IPV4/IPV6)的字符串list,最少1个，例如：（192.168.1.1/16）IP+子网掩码</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">remoteaddr_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://www.life-runner.com</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">RemoteAddr=192.168.1.1/16</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Weight Route Predicate Factory<br>接受2个参数: <code>group</code> 和 <code>weight</code>,权重是在每一组内分别被计算.</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">   <span class="attr">cloud:</span></span><br><span class="line">       <span class="attr">gateway:</span></span><br><span class="line">         <span class="attr">routes:</span></span><br><span class="line">         <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">weight_high</span></span><br><span class="line">           <span class="attr">uri:</span> <span class="string">https://www.life-runner.com</span></span><br><span class="line">           <span class="attr">predicates:</span></span><br><span class="line">           <span class="bullet">-</span> <span class="string">Weight=group1,</span> <span class="number">8</span></span><br><span class="line">         <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">weight_low</span></span><br><span class="line">           <span class="attr">uri:</span> <span class="string">https://www.babydy.cn</span></span><br><span class="line">           <span class="attr">predicates:</span></span><br><span class="line">           <span class="bullet">-</span> <span class="string">Weight=group1,</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>表示80%流量请求<code>life-runner</code>,20%流量请求到<code>babydy</code>.</p>
+</li>
+</ol>
+<h2 id="5-GatewayFilter-Factories"><a href="#5-GatewayFilter-Factories" class="headerlink" title="5. GatewayFilter Factories"></a>5. GatewayFilter Factories</h2><p>Route filter是在特定的route范围内，SC Gateway 包含多种内置的<code>GatewayFilter Factories</code>。</p>
+<p>TODO:</p>
+<h2 id="6-Global-Filters"><a href="#6-Global-Filters" class="headerlink" title="6. Global Filters"></a>6. Global Filters</h2>
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/Isaac-Zhang" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2020 Isaac-Zhang<br></p>
+                <p class="copyright text-muted"><a target="_blank" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">陕ICP备19016566号-1</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

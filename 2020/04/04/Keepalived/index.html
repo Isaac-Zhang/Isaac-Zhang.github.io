@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="Keepalived 快速使用手册原理虚拟ip
+安装双机主备主节点MASTER
+下载 https://keepalived.org/download.html
+
+上传服务器并解压
+1[root@iZ2ze7s2v0b78922wia32rZ software]# tar -zxvf keepaliv"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Isaac-Zhang"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Keepalived"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Keepalived 快速使用手册原理虚拟ip
+安装双机主备主节点MASTER
+下载 https://keepalived.org/download.html
+
+上传服务器并解压
+1[root@iZ2ze7s2v0b78922wia32rZ software]# tar -zxvf keepaliv"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="奔跑的人生"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://life-runner.comhttps://raw.githubusercontent.com/Isaac-Zhang/Isaac-Zhang.github.io/master/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://life-runner.comhttps://raw.githubusercontent.com/Isaac-Zhang/Isaac-Zhang.github.io/master/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Keepalived - 奔跑的人生</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">做一个好人</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Isaac-Zhang" target="_blank" rel="noopener">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('https://raw.githubusercontent.com/Isaac-Zhang/Isaac-Zhang.github.io/master/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Keepalived</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2020-04-04
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Keepalived-快速使用手册"><a href="#Keepalived-快速使用手册" class="headerlink" title="Keepalived 快速使用手册"></a>Keepalived 快速使用手册</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>虚拟ip</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="双机主备"><a href="#双机主备" class="headerlink" title="双机主备"></a>双机主备</h3><h4 id="主节点MASTER"><a href="#主节点MASTER" class="headerlink" title="主节点MASTER"></a>主节点MASTER</h4><ol>
+<li><p>下载 <a href="https://keepalived.org/download.html" target="_blank" rel="noopener">https://keepalived.org/download.html</a></p>
+</li>
+<li><p>上传服务器并解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze7s2v0b78922wia32rZ software]# tar -zxvf keepalived-2.0.19.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置生成</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze7s2v0b78922wia32rZ keepalived-2.0.19]# ./configure --prefix=/usr/local/keepalived --sysconf=/etc</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>prefix：keepalived安装的位置</li>
+<li>sysconf：keepalived核心配置文件所在位置，固定位置，改成其他位置则keepalived启动不了，/var/log/messages中会报错</li>
+</ul>
+</li>
+<li><p>生成并安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze7s2v0b78922wia32rZ keepalived-2.0.19]# make &amp;&amp; make install</span><br><span class="line">...</span><br><span class="line">[root@iZ2ze7s2v0b78922wia32rZ keepalived-2.0.19]# whereis keepalived</span><br><span class="line">keepalived: /etc/keepalived /usr/local/keepalived</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置<code>keepalived.conf</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;</span><br><span class="line"><span class="meta">   #</span><span class="bash"> 路由id：当前安装keepalived的节点主机标识符，保证全局唯一</span></span><br><span class="line">   router_id keep_171</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vrrp_instance VI_1 &#123;</span><br><span class="line">    # 表示状态是MASTER主机还是备用机BACKUP</span><br><span class="line">    state MASTER</span><br><span class="line">    # 该实例绑定的网卡</span><br><span class="line">    interface ens33</span><br><span class="line">    # 保证主备节点一致即可</span><br><span class="line">    virtual_router_id 51</span><br><span class="line">    # 权重，master权重一般高于backup，如果有多个，那就是选举，谁的权重高，谁就当选</span><br><span class="line">    priority 100</span><br><span class="line">    # 主备之间同步检查时间间隔，单位秒</span><br><span class="line">    advert_int 2</span><br><span class="line">    # 认证权限密码，防止非法节点进入</span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 12345678</span><br><span class="line">    &#125;</span><br><span class="line">    # 虚拟出来的ip，可以有多个（vip）</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">        172.17.133.251</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看linux网卡地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze7s2v0b78922wia32rZ keepalived-2.0.19]# ip addr</span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000</span><br><span class="line">    link/ether 00:16:3e:14:6a:e5 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.133.250/20 brd 172.17.143.255 scope global dynamic eth0</span><br><span class="line">       valid_lft 313370644sec preferred_lft 313370644sec</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，只有<code>172.17.133.250</code></p>
+</li>
+<li><p>启动<code>keepalived</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze7s2v0b78922wia32rZ keepalived]# /usr/local/keepalived/sbin/keepalived </span><br><span class="line">[root@iZ2ze7s2v0b78922wia32rZ keepalived]# ps -ef|grep keepalived</span><br><span class="line">root     12248     1  0 10:07 ?        00:00:00 /usr/local/keepalived/sbin/keepalived</span><br><span class="line">root     12249 12248  0 10:07 ?        00:00:00 /usr/local/keepalived/sbin/keepalived</span><br><span class="line">root     12251  6194  0 10:07 pts/0    00:00:00 grep --color=auto keepalived</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新查看linux网卡</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze7s2v0b78922wia32rZ keepalived]# ip addr</span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000</span><br><span class="line">    link/ether 00:16:3e:14:6a:e5 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.133.250/20 brd 172.17.143.255 scope global dynamic eth0</span><br><span class="line">       valid_lft 313369237sec preferred_lft 313369237sec</span><br><span class="line">    inet 172.17.133.251/32 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，我们之前配置的虚拟ip<code>172.17.133.251</code>已经生效了。</p>
+</li>
+<li><p>停止<code>keepalived</code></p>
+<blockquote>
+<p>原生的keepalived不支持stop命令，只能通过kill当前进程来关闭，如：</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze7s2v0b78922wia32rZ keepalived]# ps -ef|grep keepalived</span><br><span class="line">root     12248     1  0 Dec20 ?        00:00:00 /usr/local/keepalived/sbin/keepalived</span><br><span class="line">root     12249 12248  0 Dec20 ?        00:00:18 /usr/local/keepalived/sbin/keepalived</span><br><span class="line">root     13968 13947  0 08:48 pts/0    00:00:00 grep --color=auto keepalived</span><br><span class="line">[root@iZ2ze7s2v0b78922wia32rZ keepalived]# kill -9 12248</span><br><span class="line">[root@iZ2ze7s2v0b78922wia32rZ keepalived]# ps -ef|grep keepalived</span><br><span class="line">root     13971 13947  0 08:49 pts/0    00:00:00 grep --color=auto keepalived</span><br><span class="line">[root@iZ2ze7s2v0b78922wia32rZ keepalived]#</span><br></pre></td></tr></table></figure>
+
+<p>为了更加友好的启停<code>keepalived</code>，我们将其作为一个<code>服务</code>注册到<code>linux系统</code>。</p>
+<ul>
+<li><p>进入到<code>keepalived</code>安装目录<code>/home/software/keepalived-2.0.19/keepalived/etc</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze7s2v0b78922wia32rZ etc]# ll</span><br><span class="line">total 64</span><br><span class="line">drwxrwxr-x 2 1000 1000  4096 Dec 20 09:39 init</span><br><span class="line">drwxrwxr-x 2 1000 1000  4096 Dec 20 09:39 init.d</span><br><span class="line">drwxrwxr-x 2 1000 1000  4096 Aug 16  2018 keepalived</span><br><span class="line">-rw-r--r-- 1 root root 19516 Dec 20 09:39 Makefile</span><br><span class="line">-rw-rw-r-- 1 1000 1000   181 Aug 16  2018 Makefile.am</span><br><span class="line">-rw-rw-r-- 1 1000 1000 18377 Oct 20 00:16 Makefile.in</span><br><span class="line">drwxrwxr-x 2 1000 1000  4096 Aug 16  2018 openrc</span><br><span class="line">drwxrwxr-x 2 1000 1000  4096 Aug 16  2018 sysconfig</span><br><span class="line">[root@iZ2ze7s2v0b78922wia32rZ etc]#</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们需要<code>复制</code>2个文件到系统目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze7s2v0b78922wia32rZ etc]# cp init.d/keepalived /etc/init.d/</span><br><span class="line">[root@iZ2ze7s2v0b78922wia32rZ etc]# cp sysconfig/keepalived /etc/sysconfig/</span><br><span class="line">cp: overwrite ‘/etc/sysconfig/keepalived’? y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>刷新系统配置，让上述操作生效</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze7s2v0b78922wia32rZ etc]# systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>新命令</code>重新启动<code>keepalived</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze7s2v0b78922wia32rZ etc]# systemctl start keepalived.service</span><br><span class="line">[root@iZ2ze7s2v0b78922wia32rZ etc]# ps -ef|grep keepalived/</span><br><span class="line">root     14018     1  0 08:59 ?        00:00:00 /usr/local/keepalived/sbin/keepalived -D</span><br><span class="line">root     14019 14018  0 08:59 ?        00:00:00 /usr/local/keepalived/sbin/keepalived -D</span><br><span class="line">root     14021 13947  0 09:00 pts/0    00:00:00 grep --color=auto keepalived/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>新命令</code>关闭<code>keepalived</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze7s2v0b78922wia32rZ etc]# systemctl stop keepalived.service</span><br><span class="line">[root@iZ2ze7s2v0b78922wia32rZ etc]# ps -ef|grep keepalived/          </span><br><span class="line">root     14030 13947  0 09:03 pts/0    00:00:00 grep --color=auto keepalived/</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="备用节点BACKUP"><a href="#备用节点BACKUP" class="headerlink" title="备用节点BACKUP"></a>备用节点BACKUP</h4><blockquote>
+<p>参考主节点安装目录，安装备用节点keepalived，只需更改配置即可！</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;</span><br><span class="line"><span class="meta">   #</span><span class="bash"> 路由id：当前安装keepalived的节点主机标识符，必须全局唯一</span></span><br><span class="line">   router_id keepalived_aliyun_16_bak</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 虚拟实例id可改，也可不改</span></span><br><span class="line">vrrp_instance VI_2 &#123;</span><br><span class="line"><span class="meta">	#</span><span class="bash"> MASTER --&gt; 更改为 BACKUP</span></span><br><span class="line">    state BACKUP</span><br><span class="line">    # 网卡需要确认是否修改（ip addr）</span><br><span class="line">    interface eth0</span><br><span class="line">    virtual_router_id 51</span><br><span class="line">    # 优先级降低（对比MASTER）</span><br><span class="line">    priority 99</span><br><span class="line">    advert_int 1</span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASSMASTER</span><br><span class="line">        auth_pass 12345678</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">    	# 对应的虚拟IP和主节点一致</span><br><span class="line">        172.17.133.251</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="双主热备"><a href="#双主热备" class="headerlink" title="双主热备"></a>双主热备</h3><p><img src="https://i.loli.net/2019/12/25/ZTpOUy4vPFB8sxl.png" alt="双主热备模型"></p>
+<p>单台机器配置多个实例对象，并且每一个都包含<code>MASTER &amp; BACKUP</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;</span><br><span class="line"><span class="meta">   #</span><span class="bash"> 路由id：当前安装keepalived的节点主机标识符，必须全局唯一</span></span><br><span class="line">   router_id keepalived_aliyun_16</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vrrp_script check_nginx_alive&#123;</span><br><span class="line">    script "/etc/keepalived/check_nginx_is_alive.sh"</span><br><span class="line">    interval 2 # 每隔两秒运行上一行脚本</span><br><span class="line">    weight 10 # 如果脚本运行成功，则升级权重+10，否则可以降权，比如配置为-10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vrrp_instance VI_1 &#123;</span><br><span class="line">    state MASTER</span><br><span class="line">    interface eth0</span><br><span class="line">    virtual_router_id 51</span><br><span class="line">    priority 100</span><br><span class="line">    advert_int 1</span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 12345678</span><br><span class="line">    &#125;</span><br><span class="line">    track_script&#123;</span><br><span class="line">        check_nginx_alive</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">        172.17.133.251</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vrrp_instance VI_2 &#123;</span><br><span class="line">    state BACKUP</span><br><span class="line">    interface eth0</span><br><span class="line">    virtual_router_id 52</span><br><span class="line">    priority80</span><br><span class="line">    advert_int 1</span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 12345678</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">        172.17.133.252</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="keepalived-自动检测Nginx服务"><a href="#keepalived-自动检测Nginx服务" class="headerlink" title="keepalived 自动检测Nginx服务"></a>keepalived 自动检测Nginx服务</h2><blockquote>
+<p>在系统提供的过程中，只有<code>keepalived</code>服务中断后，我们才能切换到备用节点，但是如果只是nginx或者tomcat中断，虽然<code>keepalived</code>服务器是好的，但是实际我们的网站无法提供服务了，此时，我们需要一种机制来保证可以自动切换到备用节点。</p>
+<p><code>keepalived</code>提供了一种脚本机制来实现自动检测、切换功能。</p>
+</blockquote>
+<ol>
+<li><p>编写服务检测脚本<code>check_nginx_is_alive.sh</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">A=`ps -C nginx --no-header |wc -l`</span><br><span class="line"><span class="meta">#</span><span class="bash"> 判断nginx是否宕机，如果宕机了，尝试重启</span></span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    /usr/local/nginx/sbin/nginx</span><br><span class="line">    # 等待一小会再次检查nginx，如果没有启动成功，则停止keepalived，使其启动备用机</span><br><span class="line">    sleep 3</span><br><span class="line">    if [ `ps -C nginx --no-header |wc -l` -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改脚本权限<code>chmod -x check_nginx_is_alive.sh</code></p>
+</li>
+<li><p>重新配置<code>keepalived.conf</code>，新增配置脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;</span><br><span class="line"><span class="meta">   #</span><span class="bash"> 路由id：当前安装keepalived的节点主机标识符，必须全局唯一</span></span><br><span class="line">   router_id keepalived_aliyun_16</span><br><span class="line">  </span><br><span class="line"><span class="meta">#</span><span class="bash"> 编写调用脚本的函数</span></span><br><span class="line">vrrp_script check_nginx_alive&#123;</span><br><span class="line">    script "/etc/keepalived/check_nginx_is_alive.sh"</span><br><span class="line">    interval 2 # 每隔两秒运行上一行脚本</span><br><span class="line">    weight 10 # 如果脚本运行成功，则升级权重+10，否则可以降权，比如配置为-10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vrrp_instance VI_1 &#123;</span><br><span class="line">    state MASTER</span><br><span class="line">    interface eth0</span><br><span class="line">    virtual_router_id 51</span><br><span class="line">    priority 100</span><br><span class="line">    advert_int 1</span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 12345678</span><br><span class="line">    &#125;</span><br><span class="line">    # 实例启动的时候，执行上面的函数</span><br><span class="line">    track_script&#123;</span><br><span class="line">        check_nginx_alive</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">        172.17.133.251</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启<code>keepalived</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2ze7s2v0b78922wia32rZ keepalived]# systemctl restart keepalived.service</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/Isaac-Zhang" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2020 Isaac-Zhang<br></p>
+                <p class="copyright text-muted"><a target="_blank" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">陕ICP备19016566号-1</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
